@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Data</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6ffe6; /* Light green background */
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;  /* White background for container */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tr:hover {
+            background-color: #e2f3e2;
+        }
+
+        .upload-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .upload-button a {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ID Database</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Full Name</th>
+                    <th>Date of Birth</th>
+                    <th>Sex</th>
+                    <th>Place of Birth</th>
+                    <th>District of Birth</th>
+                    <th>ID Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr>
+                        <td>{{ item.serial_number }}</td>
+                        <td>{{ item.full_name }}</td>
+                        <td>{{ item.date_of_birth }}</td>
+                        <td>{{ item.sex }}</td>
+                        <td>{{ item.place_of_birth }}</td>
+                        <td>{{ item.district_of_birth }}</td>
+                        <td>{{ item.id_number }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        >
+        <div class="upload-button">
+            <a href="{% url 'upload' %}">Go back to Upload Page</a>
+        </div>
+    </div>
+</body>
+</html>
