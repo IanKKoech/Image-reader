@@ -1,7 +1,8 @@
 import base64
 import re
-
+import os
 import requests
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.urls import reverse
@@ -11,10 +12,11 @@ from datetime import datetime
 from django.contrib import messages
 from PIL import Image
 import pytesseract
+from dotenv import load_dotenv
 
-
-# OpenAI API Key
-api_key = "sk-proj-pZZ2JI1H1vYoFkum1OzST3BlbkFJSgKB7EFI0FlLYvNrOv73"
+#Accessing OpenAI API Key
+load_dotenv()
+api_key = os.getenv("API_KEY")
 
 def encode_image(image_file):
     return base64.b64encode(image_file.read()).decode('utf-8')
