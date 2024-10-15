@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payslip Database</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f5f0; /* Softer light green background */
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px; /* Increased width to better fit the table */
+            width: 95%;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;  /* White background for container */
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #444;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f7f7f7;
+            color: #333;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tr:hover {
+            background-color: #e0f7e0; /* Slightly brighter hover effect */
+        }
+
+        .upload-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .upload-button a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        }
+
+        .upload-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Client Payslip Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th> 
+                    <th>Employer</th>
+                    <th>Payroll Number</th>
+                    <th>Employee Name</th>
+                    <th>Station</th>
+                    <th>ID Number</th>
+                    <th>Tax PIN</th>
+                    <th>Basic Salary</th>
+                    <th>Rental House Allowance</th>
+                    <th>Hardship Allowance</th>
+                    <th>Commuter Allowance</th>
+                    <th>Total Earnings</th>
+                    <th>Total Deductions</th>
+                    <th>Net Pay</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td> 
+                        <td>{{ item.employer_name }}</td>
+                        <td>{{ item.payroll_number }}</td>
+                        <td>{{ item.employee_name }}</td>
+                        <td>{{ item.location }}</td>
+                        <td>{{ item.id_number }}</td>
+                        <td>{{ item.tax_pin }}</td>
+                        <td>{{ item.basic_salary }}</td>
+                        <td>{{ item.rental_house_allowance }}</td>
+                        <td>{{ item.hardship_allowance }}</td>
+                        <td>{{ item.commuter_allowance }}</td>
+                        <td>{{ item.total_earnings }}</td>
+                        <td>{{ item.total_deductions }}</td>
+                        <td>{{ item.net_pay }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="upload-button">
+            <a href="{% url 'uploadPayslip' %}">Go back to Upload Page</a>
+        </div>
+    </div>
+</body>
+</html>

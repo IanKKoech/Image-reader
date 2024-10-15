@@ -20,6 +20,8 @@ from idapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('upload/', views.process_image, name='upload'),
+    path('', views.process_upload, name='upload'),
     path('data/', views.read_database, name='data'),
+    path('payslipData/', views.read_payslip_database, name='payslipData'),
+    path('view_application_form/', views.view_application_form, name='view_application_form'),
 ]

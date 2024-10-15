@@ -1,0 +1,2 @@
+from django_tabulate.base import tabulate_qs
+from django_tabulate.mixins import TabulateMixin, TabulateQuerySet
